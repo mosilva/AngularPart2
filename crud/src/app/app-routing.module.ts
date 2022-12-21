@@ -1,17 +1,24 @@
-import { NotFoundComponent } from './users/not-found/not-found.component';
-import { CreateUserComponent } from './users/create-user/create-user.component';
-import { UsersComponent } from './users/users/users.component';
-import { NgModule, Component } from '@angular/core';
+import { ListComponent } from './users/components/list/list.component';
+import { CreateUserComponent } from './users/components/create-user/create-user.component';
+import { UsersComponent } from './users/users.component';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './users/components/not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: 'users',
     component: UsersComponent,
-  },
-  {
-    path: 'create-users',
-    component: CreateUserComponent,
+    children: [
+      {
+        path: 'create',
+        component: CreateUserComponent,
+      },
+      {
+        path: '',
+        component: ListComponent,
+      },
+    ],
   },
   { path: '', redirectTo: '/users', pathMatch: 'full' },
   {
