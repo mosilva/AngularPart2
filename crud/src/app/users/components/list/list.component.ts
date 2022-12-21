@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ListComponent {
   public users: User[] = JSON.parse(localStorage.getItem('USERS') || '[]');
+  public panelOpenState = false;
 }

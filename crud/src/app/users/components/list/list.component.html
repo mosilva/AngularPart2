@@ -17,13 +17,24 @@
             <strong>Data de nascimento: </strong
             >{{ user.birthDate | date : "dd/MM/yyyy" }}
           </p>
-          <p>
-            <strong>Endereço: </strong>{{ user.address.street }}, nº
-            {{ user.address.number }} {{ user.address.complement }} -
-            {{ user.address.neighborhood }}, {{ user.address.city }}-{{
-              user.address.state
-            }}, CEP: {{ user.address.zipCode | mask : "00000-000" }}
-          </p>
+
+          <mat-accordion>
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title> <strong>Endereço</strong> </mat-panel-title>
+                <mat-panel-description> </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{ user.address.street }}, nº {{ user.address.number }}</p>
+              <p>
+                {{ user.address.complement }} - {{ user.address.neighborhood }}
+              </p>
+              <p>{{ user.address.city }} - {{ user.address.state }}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <br />
           <p>
             <strong>Telefone: </strong
             >{{ user.contact.phone | mask : "(00) 0 0000-0000" }}
