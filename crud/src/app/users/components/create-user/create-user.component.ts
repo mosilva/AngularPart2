@@ -24,23 +24,23 @@ export class CreateUserComponent implements OnInit {
   private buildForm(): void {
     this.form = new FormGroup({
       id: new FormControl(crypto.randomUUID()),
-      name: new FormControl(),
-      profession: new FormControl(),
-      birthDate: new FormControl(),
-      documentNumber: new FormControl(),
+      name: new FormControl(null, [Validators.required]),
+      profession: new FormControl(null, [Validators.required]),
+      birthDate: new FormControl(null, [Validators.required]),
+      documentNumber: new FormControl(null, [Validators.required]),
       address: new FormGroup({
         id: new FormControl(crypto.randomUUID()),
-        street: new FormControl(),
-        number: new FormControl(),
+        street: new FormControl(null, [Validators.required]),
+        number: new FormControl(null, [Validators.required]),
         complement: new FormControl(),
-        neighborhood: new FormControl(),
-        city: new FormControl(),
-        state: new FormControl(),
-        zipCode: new FormControl(),
+        neighborhood: new FormControl(null, [Validators.required]),
+        city: new FormControl(null, [Validators.required]),
+        state: new FormControl(null, [Validators.required]),
+        zipCode: new FormControl(null, [Validators.required]),
       }),
       contact: new FormGroup({
-        phone: new FormControl(),
-        email: new FormControl('', [Validators.email]),
+        phone: new FormControl(null, [Validators.required]),
+        email: new FormControl(null, [Validators.email, Validators.required]),
       }),
     });
   }
