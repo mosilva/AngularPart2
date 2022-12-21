@@ -1,3 +1,5 @@
+import { State } from './../../models/states.model';
+import { UsersService } from './../../service/users.service';
 import { User } from './../../models/user.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,13 +14,15 @@ import { Router } from '@angular/router';
 export class CreateUserComponent implements OnInit {
   public form!: FormGroup;
   createData!: User;
+  public states!: State[];
   @ViewChild(MatAccordion)
   accordion!: MatAccordion;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.buildForm();
+    this.getStates();
   }
 
   private buildForm(): void {
@@ -43,6 +47,10 @@ export class CreateUserComponent implements OnInit {
         email: new FormControl(null, [Validators.email, Validators.required]),
       }),
     });
+  }
+
+  private getStates(): void {
+    this.states = this.usersService.getStatesOfBrazil();
   }
 
   public CreateUserForm(event: any): void {

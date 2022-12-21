@@ -32,6 +32,7 @@
             placeholder="Exemplo, Marcelo Oliveira Silva"
             formControlName="name"
           />
+          <mat-error>Campo inválido</mat-error>
           <mat-hint align="end">{{ inputName.value.length }}/80</mat-hint>
         </mat-form-field>
         <br />
@@ -174,18 +175,13 @@
           <br />
           <br />
 
-          <mat-form-field
-            hintLabel="Máx 2 characters"
-            appearance="fill"
-            [style.width.px]="327"
-          >
-            <mat-label>Digite a sigla do seu Estado...</mat-label>
-            <input
-              matInput
-              maxlength="2"
-              placeholder="Por exemplo, SP"
-              formControlName="state"
-            />
+          <mat-form-field appearance="fill" [style.width.px]="327">
+            <mat-label>Selecione o teu Estado...</mat-label>
+            <mat-select formControlName="state">
+              <mat-option *ngFor="let state of states" [value]="state.abbr">{{
+                state.name
+              }}</mat-option>
+            </mat-select>
           </mat-form-field>
           <br />
           <br />
@@ -247,6 +243,7 @@
       <button
         mat-raised-button
         color="primary"
+        [disabled]="form.invalid"
         (click)="CreateUserForm($event)"
       >
         Create
