@@ -1,0 +1,4 @@
+.container mat-form-field + mat-form-field input{
+  margin-left: 8px;
+  width: 25vw;
+}

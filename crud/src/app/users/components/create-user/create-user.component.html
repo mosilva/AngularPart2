@@ -1,1 +1,256 @@
-<p>create-user works!</p>
+<section class="container">
+  <h2 class="form__title">Cadastrar Usuário</h2>
+
+  <form [formGroup]="form">
+    <button mat-button (click)="accordion.openAll()">
+      Abra todos os campos do preenchimento
+    </button>
+    <button mat-button (click)="accordion.closeAll()">
+      Esconda todos os campos do preenchimento
+    </button>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Usuário </mat-panel-title>
+          <mat-panel-description>
+            Cadastre seu nome, profissão, data de nascimento e CPF
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field
+          hintLabel="Máx 80 characters"
+          appearance="fill"
+          [style.width.px]="327"
+        >
+          <mat-label>Digite o nome...</mat-label>
+          <input
+            matInput
+            #inputName
+            maxlength="80"
+            placeholder="Exemplo, Marcelo Oliveira Silva"
+            formControlName="name"
+          />
+          <mat-hint align="end">{{ inputName.value.length }}/80</mat-hint>
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field
+          hintLabel="Máx 50 characters"
+          appearance="fill"
+          [style.width.px]="327"
+        >
+          <mat-label>Digite a profissão...</mat-label>
+          <input
+            matInput
+            #inputProfession
+            maxlength="50"
+            placeholder="Exemplo, Marcelo Oliveira Silva"
+            formControlName="profession"
+          />
+          <mat-hint align="end">{{ inputProfession.value.length }}/50</mat-hint>
+        </mat-form-field>
+        <br />
+        <br />
+        <mat-form-field appearance="fill" [style.width.px]="327">
+          <mat-label>Digite a data de nascimento...</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (focus)="picker.open()"
+            readonly
+            formControlName="birthDate"
+          />
+          <mat-icon matSuffix>date_range</mat-icon>
+        </mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+        <br />
+        <br />
+        <mat-form-field appearance="fill" [style.width.px]="327">
+          <mat-label>Digite o CPF...</mat-label>
+          <input
+            matInput
+            mask="000.000.000-00"
+            placeholder="123.456.789-01"
+            formControlName="documentNumber"
+          />
+        </mat-form-field>
+        <br />
+        <br />
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br />
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Endereço </mat-panel-title>
+          <mat-panel-description>
+            Cadastre rua, número, bairro, cidade, Estado e CEP
+            <mat-icon>home</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="address" formGroupName="address">
+          <mat-form-field
+            hintLabel="Máx 100 characters"
+            appearance="fill"
+            [style.width.px]="327"
+          >
+            <mat-label>Digite o nome da rua...</mat-label>
+            <input
+              matInput
+              #inputStreet
+              maxlength="100"
+              placeholder="Por exemplo, Rua Brasil"
+              formControlName="street"
+            />
+            <mat-hint align="end">{{ inputStreet.value.length }}/100</mat-hint>
+          </mat-form-field>
+          <br />
+          <br />
+          <mat-form-field appearance="fill" [style.width.px]="327">
+            <mat-label>Selecione o número do endereço...</mat-label>
+            <input matInput type="number" min="1" formControlName="number" />
+          </mat-form-field>
+          <br />
+          <br />
+          <mat-form-field
+            hintLabel="Máx 50 characters"
+            appearance="fill"
+            [style.width.px]="327"
+          >
+            <mat-label>Digite o complemento...</mat-label>
+            <input
+              matInput
+              #inputComplement
+              maxlength="50"
+              placeholder="Por exemplo, Bloco 2 - Apt 250"
+              formControlName="complement"
+            />
+            <mat-hint align="end"
+              >{{ inputComplement.value.length }}/50</mat-hint
+            >
+          </mat-form-field>
+          <br />
+          <br />
+
+          <mat-form-field
+            hintLabel="Máx 50 characters"
+            appearance="fill"
+            [style.width.px]="327"
+          >
+            <mat-label>Digite o bairro...</mat-label>
+            <input
+              matInput
+              #inputNeighborhood
+              maxlength="50"
+              placeholder="Por exemplo, Pinheiros"
+              formControlName="neighborhood"
+            />
+            <mat-hint align="end"
+              >{{ inputNeighborhood.value.length }}/50</mat-hint
+            >
+          </mat-form-field>
+          <br />
+          <br />
+
+          <mat-form-field
+            hintLabel="Máx 50 characters"
+            appearance="fill"
+            [style.width.px]="327"
+          >
+            <mat-label>Digite a cidade...</mat-label>
+            <input
+              matInput
+              #inputCity
+              maxlength="50"
+              placeholder="Por exemplo, São Paulo"
+              formControlName="city"
+            />
+            <mat-hint align="end">{{ inputCity.value.length }}/50</mat-hint>
+          </mat-form-field>
+          <br />
+          <br />
+
+          <mat-form-field
+            hintLabel="Máx 2 characters"
+            appearance="fill"
+            [style.width.px]="327"
+          >
+            <mat-label>Digite a sigla do seu Estado...</mat-label>
+            <input
+              matInput
+              maxlength="2"
+              placeholder="Por exemplo, SP"
+              formControlName="state"
+            />
+          </mat-form-field>
+          <br />
+          <br />
+
+          <mat-form-field appearance="fill" [style.width.px]="327">
+            <mat-label>Digite o CEP...</mat-label>
+            <input
+              matInput
+              mask="00000-000"
+              placeholder="Por exemplo, 12345-678"
+              formControlName="zipCode"
+            />
+          </mat-form-field>
+          <br />
+          <br />
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br />
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title> Contato </mat-panel-title>
+          <mat-panel-description>
+            Cadastre teu telefone (WhatsApp) e e-mail para contato
+            <mat-icon>contactless</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <br />
+        <br />
+
+        <div class="contact" formGroupName="contact">
+          <mat-form-field appearance="fill" [style.width.px]="327">
+            <mat-label>Digite o teu celular/WhatsApp com DDD...</mat-label>
+            <input
+              matInput
+              mask="(00) 0 0000-0000"
+              placeholder="Exemplo, (11) 9 9999-9999"
+              formControlName="phone"
+            />
+          </mat-form-field>
+          <br />
+          <br />
+          <mat-form-field appearance="fill" [style.width.px]="327">
+            <mat-label>Digite o teu email...</mat-label>
+            <input
+              matInput
+              placeholder="Exemplo, marcelo@gmail.com"
+              formControlName="email"
+            />
+          </mat-form-field>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br />
+    <div class="button-wrapper">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="CreateUserForm($event)"
+      >
+        Create
+      </button>
+    </div>
+  </form>
+</section>

@@ -14,6 +14,11 @@ import { ListComponent } from './users/components/list/list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 
 const MATERIAL = [
   MatToolbarModule,
@@ -22,6 +27,10 @@ const MATERIAL = [
   MatCardModule,
   MatDividerModule,
   MatExpansionModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({
@@ -38,9 +47,14 @@ const MATERIAL = [
     BrowserAnimationsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    FormsModule,
+    ReactiveFormsModule,
     MATERIAL,
   ],
-  providers: [provideNgxMask()],
+  providers: [
+    provideNgxMask(),
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
