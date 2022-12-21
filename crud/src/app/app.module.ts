@@ -11,8 +11,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NotFoundComponent } from './users/components/not-found/not-found.component';
 import { ListComponent } from './users/components/list/list.component';
+import { MatCardModule } from '@angular/material/card';
 
-const MATERIAL = [MatToolbarModule, MatIconModule, MatButtonModule];
+const MATERIAL = [
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+];
 
 @NgModule({
   declarations: [
