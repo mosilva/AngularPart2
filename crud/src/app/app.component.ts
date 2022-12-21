@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './users/models/user.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { User } from './users/models/user.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public users: User[] = [
     {
       id: crypto.randomUUID(),
@@ -51,4 +51,8 @@ export class AppComponent {
       },
     },
   ];
+
+  ngOnInit(): void {
+    localStorage.setItem('USERS', JSON.stringify(this.users));
+  }
 }
