@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,12 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { NotFoundComponent } from './users/components/not-found/not-found.component';
 import { ListComponent } from './users/components/list/list.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 const MATERIAL = [
   MatToolbarModule,
   MatIconModule,
   MatButtonModule,
   MatCardModule,
+  MatDividerModule,
 ];
 
 @NgModule({
@@ -28,8 +30,15 @@ const MATERIAL = [
     NotFoundComponent,
     ListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MATERIAL],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    MATERIAL,
+  ],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
