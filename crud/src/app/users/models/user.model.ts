@@ -1,3 +1,6 @@
+import { Address } from './address.model';
+import { Contact } from './contact.model';
+
 export interface User {
   id: string;
   name: string;
